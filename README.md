@@ -1,29 +1,18 @@
-# hello-world3
+# CodeRevue
 
-## Project setup
-```
-yarn install
-```
+A mostly social simple (post commit) code review tool.
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## Is it any good?
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+It is written in Vue, backed by a Firestore database.
 
-### Run your tests
-```
-yarn run test
-```
+This tool is written for our team's needs and is supposed to be very simple.
+As it is not a mission critical app at all, and most of what is added to it is prototypical (like an idea we
+ thought would be cool to have for our team), there aren't many quality requirements other than get it to work!
+ 
+## How to run it?
 
-### Lints and fixes files
-```
-yarn run lint
-```
+Download and then:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    npm install
+    npm serve
