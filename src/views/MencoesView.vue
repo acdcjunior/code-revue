@@ -4,88 +4,41 @@
                 fluid
                 grid-list-md
         >
-            <v-layout row wrap>
+            <ComentarioGrande :comentario="messages[0]"></ComentarioGrande>
 
-                <v-flex
-                        v-for="card in cards"
-                        v-bind="{ [`xs${card.flex}`]: true }"
-                        :key="card.title"
-                >
-                    <v-card>
-                        <v-list-tile class="grow">
-                            <v-list-tile-avatar color="grey darken-3">
-                                <v-img
-                                        class="elevation-6"
-                                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-                                ></v-img>
-                            </v-list-tile-avatar>
+            <ComentarioGrande :comentario="messages[1]"></ComentarioGrande>
 
-                            <v-list-tile-content>
-                                <v-list-tile-title>Evan You</v-list-tile-title>
-                            </v-list-tile-content>
-
-                            <v-layout>
-                                <v-layout>x</v-layout>
-                                <v-layout align-center justify-end>
-                                    <v-icon class="mr-1">mdi-heart</v-icon>
-                                    <span class="subheading mr-2">256</span>
-                                    <span class="mr-1">·</span>
-                                    <v-icon class="mr-1">mdi-share-variant</v-icon>
-                                    <span class="subheading">45</span>
-                                </v-layout>
-                            </v-layout>
-                        </v-list-tile>
-
-                        <v-divider light></v-divider>
-
-                        <v-layout>
-                            <v-flex xs4 offset-xs1>
-                                <v-avatar>
-                                    <img
-                                            src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                            alt="John"
-                                    >
-                                </v-avatar>
-                            </v-flex>
-                            <v-flex xs7>
-                                <v-card-title primary-title>
-                                    <div>
-                                        <div class="headline">Supermodel</div>
-                                        <div>Foster the People</div>
-                                        <div>(2014)</div>
-                                    </div>
-                                </v-card-title>
-                            </v-flex>
-                        </v-layout>
-                        <v-divider light></v-divider>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn icon>
-                                <v-icon>favorite</v-icon>
-                            </v-btn>
-                            <v-btn icon>
-                                <v-icon>bookmark</v-icon>
-                            </v-btn>
-                            <v-btn icon>
-                                <v-icon>share</v-icon>
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-flex>
-
-            </v-layout>
         </v-container>
     </v-card>
 </template>
 
 <script>
+    import ComentarioGrande from "../components/ComentarioGrande";
+
     export default {
         name: "MencoesView",
+        components: {ComentarioGrande},
         data: () => ({
             cards: [
                 { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 },
-            ]
+            ],
+            messages: [{
+                avatar: 'https://avatars1.githubusercontent.com/u/5091082?s=88&v=4',
+                name: '@antonio',
+                date: 'Há 3 horas',
+                project: 'sagas2',
+                branch: 'master',
+                sha: '7dff54dd',
+                texto: 'Lorem ipsum dolor sit amet, at aliquam vivendum vel, everti delicatissimi cu eos. Dico iuvaret debitis mel an, et cum zril menandri. Eum in consul legimus accusam. Ea dico abhorreant duo, quo illum minimum incorrupte no, nostro voluptaria sea eu. Suas eligendi ius at, at nemore equidem est. Sed in error hendrerit, in consul constituam cum.'
+            },{
+                avatar: 'https://avatars2.githubusercontent.com/u/12797901?s=88&v=4',
+                name: '@afonso',
+                date: 'Há 4 horas',
+                project: 'sagas2',
+                branch: 'master',
+                sha: '0gvfa4yh',
+                texto: 'Lorem ipsum dolor sit amet, at aliquam vivendum vel, everti delicatissimi cu eos. Dico iuvaret debitis mel an, et cum zril menandri. Eum in consul legimus accusam. Ea dico abhorreant duo, quo illum minimum incorrupte no, nostro voluptaria sea eu. Suas eligendi ius at, at nemore equidem est. Sed in error hendrerit, in consul constituam cum.'
+            }],
         })
     }
 </script>

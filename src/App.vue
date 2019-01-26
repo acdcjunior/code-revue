@@ -19,7 +19,7 @@
 
                         <v-tab href="#tab-1">
                             <v-icon medium>outlined_flag</v-icon> &nbsp;
-                            <v-badge color="red">Menções<span slot="badge">1</span></v-badge>
+                            <v-badge color="red">Menções<span slot="badge">2</span></v-badge>
                         </v-tab>
 
 
