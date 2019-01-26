@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "firebase": "firebase",
+    "deploy-firebase": "npm run -- firebase deploy --token $FIREBASE_DEPLOY_TOKEN"
   },
   "dependencies": {
     "diff2html": "^2.7.0",
