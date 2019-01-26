@@ -22,6 +22,10 @@ jobs:
           name: install-dependencies
           command: npm install
 
+      - run:
+          name: setup-firebase-tools
+          command: npm install firebase-tools
+
       - save_cache:
           paths:
             - node_modules
@@ -36,7 +40,9 @@ jobs:
           name: copy-firebase.json
           command: cp firebase.json ./dist/firebase.json
 
+      - run:
+          name: copy-firebase.json
+          command: cp firebase.json ./dist/firebase.json
+
       - deploy:
-          name: deploy
-          command: |
-              npm run deploy-firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
