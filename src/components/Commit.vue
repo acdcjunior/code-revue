@@ -11,7 +11,7 @@
     import {COMMITS, GET_COMMITS} from "../store/modules/commits";
     import {GET_USERS, USERS} from "../store/modules/users";
     import {DIFFS, GET_DIFFS} from "../store/modules/diffs";
-    import {COMMENTS, GET_COMMENTS} from "../store/modules/comments";
+    import {COMMENTS, GET_COMMENTS_OLD} from "../store/modules/comments";
 
     export default {
         components: {FileDiff},
@@ -23,7 +23,7 @@
         },
         computed: {
             ...mapGetters(COMMITS, {commits: GET_COMMITS}),
-            ...mapGetters(COMMENTS, {comments: GET_COMMENTS}),
+            ...mapGetters(COMMENTS, {comments: GET_COMMENTS_OLD}),
             ...mapGetters(DIFFS, {diffs: GET_DIFFS}),
             ...mapGetters(USERS, {users: GET_USERS}),
         },

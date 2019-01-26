@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { firebaseMutations } from 'vuexfire'
 
 Vue.use(Vuex);
 
@@ -17,6 +18,10 @@ export default new Vuex.Store({
     [USERS]: users,
     [DIFFS]: diffs,
     [COMMENTS]: comments,
+  },
+
+  mutations: {
+    ...firebaseMutations
   }
 
 });

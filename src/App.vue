@@ -67,6 +67,7 @@
                             <CommitsView></CommitsView>
                         </v-tab-item>
                     </v-tabs-items>
+                    <center>Logged in as @{{ userLoggedIn }}.</center>
                 </v-content>
             </v-flex>
         </v-layout>
@@ -78,11 +79,17 @@
     import CommitsARevisarView from "./views/CommitsARevisarView";
     import OutrosComentariosView from "./views/OutrosComentariosView";
     import CommitsView from "./views/CommitsView";
+    import {mapGetters} from "vuex";
+    import {GET_USER_LOGGED_IN, USERS} from "./store/modules/users";
 
     export default {
         components: {CommitsARevisarView, OutrosComentariosView, CommitsView, MencoesView},
         data: () => ({
             selectedtab: 'tab-2'
-        })
+        }),
+
+        computed: {
+            ...mapGetters(USERS, {userLoggedIn: GET_USER_LOGGED_IN}),
+        },
     };
 </script>

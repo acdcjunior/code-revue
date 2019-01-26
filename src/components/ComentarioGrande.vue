@@ -9,7 +9,7 @@
                                 <img :src="comentario.avatar" alt="Avatar">
                             </v-avatar>
                             &nbsp;
-                            <strong v-html="comentario.name"></strong>
+                            <strong v-html="'@' + comentario.name"></strong>
                             &nbsp;
                             <v-chip :color="`gray lighten-4`" class="ml-0" label small>{{ comentario.date }}</v-chip>
                             &nbsp;
@@ -19,7 +19,7 @@
                             &nbsp;
                             <v-chip :color="`green lighten-1`" class="ml-0" label small>{{ comentario.sha }}</v-chip>
                             &nbsp;
-                            <span class="grey--text">qualquer coisa aqui</span>
+                            <span class="grey--text">{{ comentario.id }}</span>
                         </v-card-text>
                     </v-card>
                 </v-flex>
@@ -32,6 +32,9 @@
                     <v-spacer></v-spacer>
                     <v-btn icon>
                         <v-icon>thumb_up</v-icon>
+                    </v-btn>
+                    <v-btn icon>
+                        <v-icon>reply</v-icon>
                     </v-btn>
                     <v-btn icon>
                         <v-icon>bookmark</v-icon>
