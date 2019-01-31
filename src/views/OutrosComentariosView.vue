@@ -33,7 +33,7 @@
         },
         firestore () {
             return {
-                locations: db.collection('locations').orderBy('createdAt')
+                locations: db.collection('test-locations').orderBy('createdAt')
             }
         },
         methods: {
