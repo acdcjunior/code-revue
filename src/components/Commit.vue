@@ -2,7 +2,7 @@
     <div>
         <CommitResumo :commit="getCommit(sha)"></CommitResumo>
         <div v-for="(diff, idx) of getCommit(sha).diffs" :key="idx">
-            <FileDiff :diff="diff" :commentsleft="commentsOLD.commentsleft" :commentsright="commentsOLD.commentsright"></FileDiff>
+            <FileDiff :diff="diff" :comments="getCommentsForCommitDiff(diff)"></FileDiff>
         </div>
         <v-divider></v-divider>
         <v-card>
@@ -11,7 +11,7 @@
                     grid-list-md
             >
 
-                <ComentarioGrande v-for="comment of comments" :comentario="comment" :key="comment.id"></ComentarioGrande>
+                <ComentarioGrande v-for="comment of commentsForCommit" :comentario="comment" :key="comment.id"></ComentarioGrande>
 
                 <br>
 
@@ -38,11 +38,7 @@
     import {COMMITS, FETCH_COMMITS, GET_COMMIT, GET_COMMITS} from "../store/modules/commits";
     import {GET_USERS, USERS} from "../store/modules/users";
     import {DIFFS, GET_DIFFS} from "../store/modules/diffs";
-    import {
-        COMMENTS,
-        FETCH_COMMENTS_FOR_COMMIT, GET_COMMENTS,
-        GET_COMMENTS_OLD
-    } from "../store/modules/comments";
+    import {COMMENTS, FETCH_COMMENTS_FOR_COMMIT, GET_COMMENTS_FOR_COMMIT, GET_COMMENTS_FOR_COMMIT_DIFF,} from "../store/modules/comments";
 
     export default {
         components: {FileDiff, CommitResumo, ComentarioGrande},
@@ -55,7 +51,7 @@
         },
         computed: {
             ...mapGetters(COMMITS, {commits: GET_COMMITS, getCommit: GET_COMMIT}),
-            ...mapGetters(COMMENTS, {commentsOLD: GET_COMMENTS_OLD, comments: GET_COMMENTS}),
+            ...mapGetters(COMMENTS, {commentsForCommit: GET_COMMENTS_FOR_COMMIT, getCommentsForCommitDiff: GET_COMMENTS_FOR_COMMIT_DIFF}),
             ...mapGetters(DIFFS, {diffs: GET_DIFFS}),
             ...mapGetters(USERS, {users: GET_USERS}),
         },

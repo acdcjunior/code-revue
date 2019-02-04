@@ -1,19 +1,18 @@
 <template>
-    <v-card v-if="items">
+    <v-card v-if="comments">
         <v-list two-line>
-            <template v-for="(item, index) in items">
-                <v-divider v-if="item.divider" :inset="item.inset" :key="index"></v-divider>
-
-                <v-list-tile v-else :key="item.title" avatar>
+            <template v-for="(comment, index) in comments">
+                <v-list-tile :key="comment.title" avatar>
                     <v-list-tile-avatar>
-                        <img :src="item.avatar" alt="Avatar">
+                        <img :src="comment.avatar" alt="Avatar">
                     </v-list-tile-avatar>
 
                     <v-list-tile-content>
-                        <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                        <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+                        <v-list-tile-title v-html="comment.name"></v-list-tile-title>
+                        <v-list-tile-sub-title v-html="comment.texto"></v-list-tile-sub-title>
                     </v-list-tile-content>
                 </v-list-tile>
+                <v-divider v-if="index !== comments.length - 1" :inset="true" :key="index"></v-divider>
             </template>
         </v-list>
         <v-divider light></v-divider>
@@ -38,8 +37,8 @@
 
 <script>
     export default {
-        name: "FileDiffComentarios",
-        props: ['items']
+        name: "FileDiffComments",
+        props: ['comments']
     }
 </script>
 

@@ -7,12 +7,12 @@ export const MENTIONS = 'MENTIONS';
 
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_MENTIONS = 'GET_MENTIONS';
+export const GET_COMMENTS_FOR_COMMIT = 'GET_COMMENTS_FOR_COMMIT';
+export const GET_COMMENTS_FOR_COMMIT_DIFF = 'GET_COMMENTS_FOR_COMMIT_DIFF';
 
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const FETCH_MENTIONS = 'FETCH_MENTIONS';
 export const FETCH_COMMENTS_FOR_COMMIT = 'FETCH_COMMENTS_FOR_COMMIT';
-
-export const GET_COMMENTS_OLD = 'GET_COMMENTS_OLD';
 
 const state = {
   [COMMENTS]: [],
@@ -27,11 +27,12 @@ const getters = {
     return state[MENTIONS];
   },
 
-  [GET_COMMENTS_OLD]: () => {
-    return {
-      commentsleft: {2: "Ball"},
-      commentsright: {5: "Rught"},
-    }
+  [GET_COMMENTS_FOR_COMMIT]: state => {
+    return state[COMMENTS].filter(comment => comment.target.type === 'commit');
+  },
+
+  [GET_COMMENTS_FOR_COMMIT_DIFF]: state => (diff) => {
+    return state[COMMENTS].filter(comment => comment.target.type === 'file' && comment.target.filename === diff.new_path);
   }
 };
 
