@@ -29,7 +29,7 @@ const getters = {
   [GET_COMMENTS_OLD]: () => {
     return {
       commentsleft: {2: "Ball"},
-      commentsright: {3: "Rught"},
+      commentsright: {5: "Rught"},
     }
   }
 };

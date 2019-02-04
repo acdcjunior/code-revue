@@ -23,35 +23,21 @@
                   <table class="d2h-diff-table">
                     <tbody class="d2h-diff-tbody">
                     <template v-for="(linha, index) of table.left">
+
                       <tr v-html="linha + table.right[index]" :key="index"></tr>
-                      <tr v-if="commentsleft[index] || commentsright[index]" :key="index+1000">
-                        <td class="d2h-code-side-linenumber d2h-cntx">??</td>
-                        <td class="comment-line">
 
-                          <v-card>
-                            <v-list two-line>
-                              <template v-for="(item, index) in items">
-                                <v-divider v-if="item.divider" :inset="item.inset" :key="index"></v-divider>
-
-                                <v-list-tile v-else :key="item.title" avatar>
-                                  <v-list-tile-avatar>
-                                    <img :src="item.avatar">
-                                  </v-list-tile-avatar>
-
-                                  <v-list-tile-content>
-                                    <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                                    <v-list-tile-sub-title v-html="item.subtitle + commentsleft[index]"></v-list-tile-sub-title>
-                                  </v-list-tile-content>
-                                </v-list-tile>
-                              </template>
-                            </v-list>
-                          </v-card>
-
-                        </td>
-
-                        <td class="d2h-code-side-linenumber d2h-cntx">??</td>
-                        <td class="comment-line"> {{ commentsright[index] }}</td>
-                      </tr>
+                      <template v-if="commentsleft[index] || commentsright[index]">
+                        <tr :key="index+1000">
+                          <td class="d2h-code-side-linenumber d2h-cntx">&nbsp;</td>
+                          <td class="comment-line">
+                            <FileDiffComentarios :items="commentsleft[index] && itemsleft"></FileDiffComentarios>
+                          </td>
+                          <td class="d2h-code-side-linenumber d2h-cntx">&nbsp;</td>
+                          <td class="comment-line">
+                            <FileDiffComentarios :items="commentsright[index] && itemsright"></FileDiffComentarios>
+                          </td>
+                        </tr>
+                      </template>
                     </template>
                     </tbody>
                   </table>
@@ -68,11 +54,13 @@
 <script>
   import "diff2html/dist/diff2html.min.css";
   import {generateHtmlDiff} from "../differ";
+  import FileDiffComentarios from "./FileDiffComentarios";
 
   export default {
+    components: {FileDiffComentarios},
     props: ['diff', 'commentsleft', 'commentsright'],
     data: () => ({
-      items: [
+      itemsleft: [
         {
           avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
           title: '<b>acdcjunior</b> 3 horas atrás',
@@ -80,13 +68,20 @@
         },
         { divider: true, inset: true },
         {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
           title: '<b>Bob Nelson</b> 4 horas atrás',
           subtitle: "Wish I could come, but I'm out of town this weekend. Wish I could come, but I'm out of town this weekend. Wish I could come, but I'm out of town this weekend."
+        }
+      ],
+      itemsright: [
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+          title: '<b>GI Joe</b> 5 horas atrás',
+          subtitle: "Yadda yadda stuff it is ye ye ye."
         },
         { divider: true, inset: true },
         {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
           title: 'Oui oui',
           subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?"
         }
