@@ -1,26 +1,25 @@
 <template>
-    <div>
-        Commits
-        <div>
-            <article v-for="(commit, idx) in commits" :key="idx">
-                <h1>
-                    <router-link :to="{name: 'singlecommit', params: {sha: commit.id } }">{{ commit.id }}</router-link>
-                </h1>
-                <h6>{{ commit.message }}</h6>
-            </article>
-        </div>
-        <hr>
-        Total:  {{ commits.length }}
-    </div>
+    <v-card>
+        <v-container
+                fluid
+                grid-list-md
+        >
+            <h1>Commits</h1>
+            <h4>Total: {{ commits.length }}</h4>
+            <div v-for="(commit, idx) in commits" :key="idx">
+                <CommitResumo :commit="commit"></CommitResumo>
+            </div>
+        </v-container>
+    </v-card>
 </template>
 
 <script>
-    import Commit from "../components/Commit";
+    import CommitResumo from "../components/CommitResumo";
     import {mapActions, mapGetters} from "vuex";
     import {COMMITS, FETCH_COMMITS, GET_COMMITS} from "../store/modules/commits";
     export default {
         name: "CommitsView",
-        components: {Commit},
+        components: {CommitResumo},
 
         computed: {
             ...mapGetters(COMMITS, {commits: GET_COMMITS})

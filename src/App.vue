@@ -6,6 +6,25 @@
                     <v-tabs color="blue" slider-color="yellow" grow>
                         <v-tabs-slider color="yellow"></v-tabs-slider>
 
+                        <v-menu
+                                bottom
+                                class="v-tabs__div"
+                                left
+                        >
+                            <a slot="activator" class="v-tabs__item">
+                                <v-icon>menu</v-icon>
+                                <span class="headline text-uppercase" style="font-size: xx-small">
+                                    (<span>CODE</span>
+                                    <span class="font-weight-light">REVUE</span>)
+                                </span>
+                            </a>
+
+                            <v-list class="grey lighten-3">
+                                <v-list-tile> a </v-list-tile>
+                                <v-list-tile> bb </v-list-tile>
+                            </v-list>
+                        </v-menu>
+
                         <v-tab to="/">
                             <v-icon medium>outlined_flag</v-icon> &nbsp;
                             <v-badge color="red">Menções<span slot="badge">2</span></v-badge>
@@ -27,15 +46,7 @@
                         </v-tab>
                     </v-tabs>
 
-                    <v-icon>remove</v-icon>
 
-                    <v-toolbar-title class="headline text-uppercase" style="width: 180px">
-                        <span>CODE</span>
-                        <span class="font-weight-light">REVUE</span>
-                    </v-toolbar-title>
-                    <v-btn icon>
-                        <v-icon>more_vert</v-icon>
-                    </v-btn>
                 </v-toolbar>
 
                 <v-content>

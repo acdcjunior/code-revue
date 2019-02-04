@@ -1,5 +1,6 @@
 <template>
     <div>
+        <CommitResumo :commit="getCommit(sha)"></CommitResumo>
         <div v-for="(diff, idx) of getCommit(sha).diffs" :key="idx">
             <FileDiff :diff="diff" :commentsleft="comments.commentsleft" :commentsright="comments.commentsright"></FileDiff>
         </div>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+    import CommitResumo from "../components/CommitResumo";
     import "diff2html/dist/diff2html.min.css";
     import FileDiff from "./FileDiff";
     import {mapActions, mapGetters} from "vuex";
@@ -16,8 +18,8 @@
     import {COMMENTS, GET_COMMENTS_OLD} from "../store/modules/comments";
 
     export default {
-        components: {FileDiff},
-        props: ['sha'],
+        components: {FileDiff, CommitResumo},
+        props: ['sha', 'commit'],
         data() {
             return {
                 tleft: "",
