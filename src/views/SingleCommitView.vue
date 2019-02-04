@@ -1,16 +1,8 @@
 <template>
     <div>
-        Commits
-        <div>
-            <article v-for="(commit, idx) in commits" :key="idx">
-                <h1>
-                    <router-link :to="{name: 'singlecommit', params: {sha: commit.id } }">{{ commit.id }}</router-link>
-                </h1>
-                <h6>{{ commit.message }}</h6>
-            </article>
-        </div>
+        Commit {{ $route.params.sha }}
         <hr>
-        Total:  {{ commits.length }}
+        <Commit :sha="$route.params.sha"></Commit>
     </div>
 </template>
 
@@ -19,7 +11,7 @@
     import {mapActions, mapGetters} from "vuex";
     import {COMMITS, FETCH_COMMITS, GET_COMMITS} from "../store/modules/commits";
     export default {
-        name: "CommitsView",
+        name: "SingleCommitView",
         components: {Commit},
 
         computed: {

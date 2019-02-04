@@ -4,6 +4,7 @@ import CommitsARevisarView from "./views/CommitsARevisarView";
 import OutrosComentariosView from "./views/OutrosComentariosView";
 import CommitsView from "./views/CommitsView";
 import MencoesView from "./views/MencoesView";
+import SingleCommitView from "./views/SingleCommitView";
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/commits',
       name: 'Commits',
       component: CommitsView
+    },
+    {
+      path: '/commits/:sha',
+      name: 'singlecommit',
+      component: SingleCommitView
     },
     {
       path: '/about',
