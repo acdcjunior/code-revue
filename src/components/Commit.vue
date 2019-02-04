@@ -4,6 +4,16 @@
         <div v-for="(diff, idx) of getCommit(sha).diffs" :key="idx">
             <FileDiff :diff="diff" :commentsleft="comments.commentsleft" :commentsright="comments.commentsright"></FileDiff>
         </div>
+        <v-spacer></v-spacer>
+        <form>
+            <v-textarea
+                    outline box
+                    name="input-7-4"
+                    label="Comentário para este commit"
+                    value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+            ></v-textarea>
+            <v-btn>Enviar</v-btn>
+        </form>
     </div>
 </template>
 
