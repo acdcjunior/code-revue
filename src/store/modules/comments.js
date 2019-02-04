@@ -10,6 +10,7 @@ export const GET_MENTIONS = 'GET_MENTIONS';
 
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const FETCH_MENTIONS = 'FETCH_MENTIONS';
+export const FETCH_COMMENTS_FOR_COMMIT = 'FETCH_COMMENTS_FOR_COMMIT';
 
 export const GET_COMMENTS_OLD = 'GET_COMMENTS_OLD';
 
@@ -41,6 +42,9 @@ const actions = {
   }),
   [FETCH_MENTIONS]: firebaseAction(({ bindFirebaseRef }, uid) => {
     bindFirebaseRef(MENTIONS, db.collection('comments').where("mentions", "array-contains", uid))
+  }),
+  [FETCH_COMMENTS_FOR_COMMIT]: firebaseAction(({ bindFirebaseRef }, sha) => {
+    bindFirebaseRef(COMMENTS, db.collection('comments').where("sha", "==", sha))
   }),
 };
 
