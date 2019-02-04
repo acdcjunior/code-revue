@@ -1,51 +1,40 @@
 <template>
-    <div>
-        <v-card flat>Outros comentarios {{ locations.length }}</v-card>
-        <hr>
-        <div>
-            <article v-for="(location, idx) in locations" :key="idx">
-                <img :src="location.image" width="200px">
-                <h1>{{ location.name }}</h1>
-                <h6>{{ location.createdAt }}</h6>
-                <button @click="deleteLocation(location.id)">
-                    Delete
-                </button>
-            </article>
-        </div>
-        <hr>
-        <input v-model="name" placeholder="Location Name">
-        <input v-model="image" placeholder="Location Image URL">
-        <button @click="addLocation(name, image)">Add New Location</button>
-    </div>
+    <v-card>
+        <v-container
+                fluid
+                grid-list-md
+        >
+
+            <ComentarioGrande v-for="comment of comments" :comentario="comment" :key="comment.id"></ComentarioGrande>
+
+        </v-container>
+    </v-card>
 </template>
 
 <script>
-    import { db } from '../main-vuefire';
+    import ComentarioGrande from "../components/ComentarioGrande";
+    import {mapActions, mapGetters} from "vuex";
+    import {COMMENTS, FETCH_COMMENTS, GET_COMMENTS} from "../store/modules/comments";
+    import {GET_USER_LOGGED_IN, USERS} from "../store/modules/users";
 
     export default {
         name: "OutrosComentariosView",
-        data () {
-            return {
-                locations: [],
-                name: '',      // <-- here
-                image: ''      // <-- here
-            }
+        components: {ComentarioGrande},
+
+        data: () => ({
+        }),
+
+        computed: {
+            ...mapGetters(COMMENTS, {comments: GET_COMMENTS}),
+            ...mapGetters(USERS, {userLoggedIn: GET_USER_LOGGED_IN}),
         },
-        firestore () {
-            return {
-                locations: db.collection('test-locations').orderBy('createdAt')
-            }
+
+        mounted() {
+            this.fetchComments();
         },
+
         methods: {
-            addLocation (name, image) {      // <-- and here
-                const createdAt = new Date();
-                db.collection('locations').add({ name, image, createdAt })
-                this.name = '';
-                this.image = '';
-            },
-            deleteLocation (id) {
-                db.collection('locations').doc(id).delete()
-            }
+            ...mapActions(COMMENTS, {fetchComments: FETCH_COMMENTS})
         }
     }
 </script>

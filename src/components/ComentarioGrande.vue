@@ -17,7 +17,7 @@
                             &nbsp;
                             <v-chip :color="`green lighten-1`" class="ml-0" label small>{{ comentario.branch }}</v-chip>
                             &nbsp;
-                            <v-chip :color="`green lighten-1`" class="ml-0" label small>{{ comentario.sha }}</v-chip>
+                            <v-chip :color="`green lighten-1`" class="ml-0" label small>{{ comentario.sha && comentario.sha.substring(0, 8) }}</v-chip>
                             &nbsp;
                             <span class="grey--text">{{ comentario.id }}</span>
                         </v-card-text>
