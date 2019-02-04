@@ -31,7 +31,7 @@
 
 <script>
     import CommitResumo from "../components/CommitResumo";
-    import ComentarioGrande from "../components/ComentarioGrande";
+    import ComentarioGrande from "./CommentCardLarge";
     import "diff2html/dist/diff2html.min.css";
     import FileDiff from "./FileDiff";
     import {mapActions, mapGetters} from "vuex";

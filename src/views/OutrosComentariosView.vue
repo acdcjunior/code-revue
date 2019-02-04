@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import ComentarioGrande from "../components/ComentarioGrande";
+    import ComentarioGrande from "../components/CommentCardLarge";
     import {mapActions, mapGetters} from "vuex";
     import {COMMENTS, FETCH_COMMENTS, GET_COMMENTS} from "../store/modules/comments";
     import {GET_USER_LOGGED_IN, USERS} from "../store/modules/users";
