@@ -1,9 +1,16 @@
 <template>
-    <div>
-        Commit {{ $route.params.sha }}
-        <hr>
-        <Commit :sha="$route.params.sha"></Commit>
-    </div>
+    <v-card>
+        <v-container
+                fluid
+                grid-list-md
+        >
+
+            Commit {{ $route.params.sha }}
+            <hr>
+            <Commit :sha="$route.params.sha"></Commit>
+
+        </v-container>
+    </v-card>
 </template>
 
 <script>

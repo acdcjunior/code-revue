@@ -7,7 +7,7 @@
             <h1>Commits</h1>
             <h4>Total: {{ commits.length }}</h4>
             <div v-for="(commit, idx) in commits" :key="idx">
-                <CommitResumo :commit="commit"></CommitResumo>
+                <CommitResumo :commit="commit" :create_link="true"></CommitResumo>
             </div>
         </v-container>
     </v-card>

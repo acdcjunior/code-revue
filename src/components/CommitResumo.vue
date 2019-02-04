@@ -21,22 +21,23 @@
                             &nbsp;
                             <v-chip :color="`green lighten-1`" class="ml-0" label small>{{ commit.project_id }}</v-chip>
                             &nbsp;
-                            <v-chip :color="`green lighten-1`" class="ml-0" label small>{{ commit.parent_ids.map(p => p.substring(0, 8)) }}</v-chip>
+                            <v-chip :color="`green lighten-1`" class="ml-0" label small v-if="commit.parent_id">{{ commit.parent_ids.map(p => p.substring(0, 8)) }}</v-chip>
                             &nbsp;
-                            <v-chip :color="`green lighten-1`" class="ml-0" label small>Diffs: {{ commit.diffs.length }}</v-chip>
+                            <v-chip :color="`green lighten-1`" class="ml-0" label small v-if="commit.diffs">Diffs: {{ commit.diffs.length }}</v-chip>
                             &nbsp;
-                            <v-chip :color="`red lighten-1`" class="ml-0" label small>additions: {{ commit.stats.additions }}</v-chip>
+                            <v-chip :color="`red lighten-1`" class="ml-0" label small v-if="commit.stats">additions: {{ commit.stats.additions }}</v-chip>
                             &nbsp;
-                            <v-chip :color="`red lighten-1`" class="ml-0" label small>deletions: {{ commit.stats.deletions }}</v-chip>
+                            <v-chip :color="`red lighten-1`" class="ml-0" label small v-if="commit.stats">deletions: {{ commit.stats.deletions }}</v-chip>
                             &nbsp;
-                            <v-chip :color="`red lighten-1`" class="ml-0" label small>total: {{ commit.stats.total }}</v-chip>
+                            <v-chip :color="`red lighten-1`" class="ml-0" label small v-if="commit.stats">total: {{ commit.stats.total }}</v-chip>
                         </v-card-text>
                     </v-card>
                 </v-flex>
                 <v-card-text>
-                    <router-link :to="{name: 'singlecommit', params: {sha: commit.id} }">
+                    <router-link v-if="create_link" :to="{name: 'singlecommit', params: {sha: commit.id} }">
                         <h2>{{ commit.title }}</h2>
                     </router-link>
+                    <h2 v-else>{{ commit.title }}</h2>
                     {{ commit.message }}
                 </v-card-text>
             </v-card>
@@ -47,7 +48,7 @@
 <script>
     export default {
         name: "CommitResumo",
-        props: ['commit']
+        props: ['commit', 'create_link']
     }
 </script>
 
